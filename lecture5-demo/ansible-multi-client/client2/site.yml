@@ -1,0 +1,5 @@
+- name: Deploy web for client2
+  hosts: all
+  become: true
+  roles:
+    - nginx_web
