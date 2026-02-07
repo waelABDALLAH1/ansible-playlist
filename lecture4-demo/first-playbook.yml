@@ -1,0 +1,17 @@
+
+- name : mon premier playbook ansible 
+  hosts : all 
+  become : true 
+
+  tasks :
+    - name : installer nginx 
+      apt : 
+        name : "{{ web_service }}"
+        state : present 
+        update_cache : yes
+
+    - name: Déployer config nginx
+      template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/sites-available/default
+      notify: restart nginx

@@ -1,0 +1,13 @@
+vars:
+  web_service: nginx
+
+- name : mon premier playbook ansible 
+  hosts : all 
+  become : true 
+
+  tasks :
+    - name : installer nginx 
+      apt : 
+        name : nginx 
+        state : present 
+        update_cache : yes

@@ -1,0 +1,5 @@
+- name: restart nginx
+  ansible.builtin.service:
+    name: "{{ web_service }}"
+    state: restarted
+  tags: [nginx, restart]

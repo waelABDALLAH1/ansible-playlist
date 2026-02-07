@@ -1,0 +1,20 @@
+- name: Installer paquets
+  ansible.builtin.apt:
+    name: "{{ extra_packages }}"
+    state: present
+    update_cache: yes
+  tags: [packages]
+
+- name: Installer nginx
+  ansible.builtin.apt:
+    name: "{{ web_service }}"
+    state: present
+  tags: [nginx, install]
+
+- name: Déployer la page web
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: "{{ web_root }}/index.html"
+    mode: "0644"
+  notify: restart nginx
+  tags: [nginx, config]

@@ -1,0 +1,4 @@
+web_service: nginx
+web_root: /var/www/html
+extra_packages:
+  - htop
